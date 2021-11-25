@@ -1,6 +1,6 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, StatusBar, Alert } from 'react-native';
+import { Platform, StyleSheet, Text, View, StatusBar, Alert } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faExclamationTriangle, faPhoneAlt, faComment, faMapMarkerAlt, faWrench } from '@fortawesome/free-solid-svg-icons'
 // import { Tab, TabView } from 'react-native-elements';
@@ -62,8 +62,8 @@ const App = () => {
   //     <View style={{justifyContent: "space-evenly"}}>
   //       <Text style={styles.title}>Safety App</Text>
   //       <Tab value={index} onChange={setIndex}>
-  //         <Tab.Item 
-  //           style={styles.tab} 
+  //         <Tab.Item
+  //           style={styles.tab}
   //           icon={<FontAwesomeIcon icon={faExclamationTriangle} size={40} color={"black"} />}>
   //           {/* // onPress={() => Alert.alert('pressed')} */}
   //         </Tab.Item>
@@ -100,12 +100,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-
-
-
-
-
-
-
-
