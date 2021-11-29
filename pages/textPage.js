@@ -1,14 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-<<<<<<< Updated upstream
-
-const TextPage = () => {
-  return(
-  <View style={styles.container}>
-    <Text style={styles.text}>this is the text page</Text>
-  </View>
-  )};
-=======
 import { Button, Card } from 'react-native-elements';
 import SendSMS from 'react-native-sms';
 
@@ -41,7 +32,6 @@ const TextPage = () => {
         {items}
     </Card>
  )};
->>>>>>> Stashed changes
 
 const styles = StyleSheet.create({
   container: {
