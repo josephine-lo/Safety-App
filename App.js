@@ -18,7 +18,7 @@ const Tab = createMaterialTopTabNavigator();
 const screenOptions = (route, color) => {
   let iconName;
   switch (route.name) {
-    case 'button':
+    case 'service':
       iconName = 'faExclamationTriangle';
       break;
     case 'call':
@@ -46,14 +46,17 @@ const App = () => {
         screenOptions={({route}) => ({
           tabBarIcon: ({color}) => screenOptions(route, color),
         })}>
-        <Tab.Screen name="button" component={ButtonPage}/>
+        <Tab.Screen name="service" component={ButtonPage}/>
         <Tab.Screen name="call" component={CallPage}/>
-        <Tab.Screen name="text" component={TextPage}/>
-        <Tab.Screen name="location" component={LocationPage}/>
-        <Tab.Screen name="contacts" component={ContactsPage}/>
+
+
       </Tab.Navigator>
     </NavigationContainer>
   );
+  //TODO: put in return
+  //<Tab.Screen name="text" component={TextPage}/>
+  //<Tab.Screen name="location" component={LocationPage}/>
+  //<Tab.Screen name="contacts" component={ContactsPage}/>
 
 
   // const [index, setIndex] = useState(0)
