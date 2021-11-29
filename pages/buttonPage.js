@@ -9,17 +9,17 @@ const ButtonPage = () => {
   }
 
   const SafewalkNum = {
-    number: '4085544410',
+    number: "4085544410",
     prompt: false
   }
 
   const CampusSafetyNum = {
-    number: '4085544441',
+    number: "4085544441",
     prompt: false
   }
 
   const CampusEmergencyNum = {
-    number: '4085544444',
+    number: "4085544444",
     prompt: false
   }
 
