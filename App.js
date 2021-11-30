@@ -5,14 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExclamationTriangle, faPhoneAlt, faComment, faMapMarkerAlt, faWrench } from '@fortawesome/free-solid-svg-icons'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-// import { AppLoading } from 'expo';
-// import {
-//   useFonts,
-//   Nunito_400Regular,
-//   Nunito_400Regular_Italic,
-//   Nunito_600SemiBold,
-//   Nunito_700Bold,
-// } from '@expo-google-fonts/nunito';
 
 import ButtonPage from './pages/buttonPage';
 import CallPage from './pages/callPage';
@@ -67,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f4f2f0',
   },
   title: {
-    fontFamily: 'Helvetica',
+    fontFamily: 'Helvetica-Neue',
     fontSize: 23,
     textAlign: 'center',
     color: '#4e4540',
