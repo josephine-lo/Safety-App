@@ -1,11 +1,18 @@
 //import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, StatusBar, Alert } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import React, { useState, useRef } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExclamationTriangle, faPhoneAlt, faComment, faMapMarkerAlt, faWrench } from '@fortawesome/free-solid-svg-icons'
-// import { Tab, TabView } from 'react-native-elements';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+// import { AppLoading } from 'expo';
+// import {
+//   useFonts,
+//   Nunito_400Regular,
+//   Nunito_400Regular_Italic,
+//   Nunito_600SemiBold,
+//   Nunito_700Bold,
+// } from '@expo-google-fonts/nunito';
 
 import ButtonPage from './pages/buttonPage';
 import CallPage from './pages/callPage';
@@ -15,82 +22,57 @@ import ContactsPage from './pages/contactsPage';
 
 const Tab = createMaterialTopTabNavigator();
 
-const screenOptions = (route, color) => {
-  let iconName;
-  switch (route.name) {
-    case 'button':
-      iconName = 'faExclamationTriangle';
-      break;
-    case 'call':
-      iconName = 'faPhoneAlt';
-      break;
-    case 'text':
-      iconName = 'faComment';
-      break;
-    case 'location':
-        iconName = 'faMapMarkerAlt';
-        break;
-    case 'contacts':
-      iconName = 'faWrench';
-      break;
-    default:
-      break;
-  }
-  return <FontAwesomeIcon icon={iconName} size={40} color={color} />;
-};
-
 const App = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({color}) => screenOptions(route, color),
-        })}>
-        <Tab.Screen name="button" component={ButtonPage}/>
-        <Tab.Screen name="call" component={CallPage}/>
-        <Tab.Screen name="text" component={TextPage}/>
-        <Tab.Screen name="location" component={LocationPage}/>
-        <Tab.Screen name="contacts" component={ContactsPage}/>
-      </Tab.Navigator>
-    </NavigationContainer>
+    <View style={styles.container}>
+      <NavigationContainer>
+        <Text style={styles.title}>SCU Safety App</Text>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarShowLabel: 'false',
+            tabBarIndicatorStyle: { backgroundColor: '#811e2d'},
+            tabBarShowIcon: 'true',
+            tabBarLabelStyle: { color: 'transparent', fontSize: '5'},
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              if (route.name === 'service')  iconName = faExclamationTriangle;
+              else if (route.name === 'call') iconName = faPhoneAlt;
+              else if (route.name === 'text') iconName = faComment;
+              else if (route.name === 'location') iconName = faMapMarkerAlt;
+              else if (route.name === 'contacts') iconName = faWrench;
+              else ;
+
+              return <FontAwesomeIcon icon={iconName} size={20} color={color} />;
+            },
+            tabBarActiveTintColor: '#b0aa7e',
+            tabBarInactiveTintColor: '#811e2d',
+            tabBarStyle: { backgroundColor: '#dfdbd3', top: '6%'},
+            tabBarIconStyle: { top: '15%', justifyContent:'center', alignItems:'center'},
+          })}>
+          <Tab.Screen name="service" component={ButtonPage}/>
+          <Tab.Screen name="call" component={CallPage}/>
+          <Tab.Screen name="text" component={TextPage}/>
+          <Tab.Screen name="location" component={LocationPage}/>
+          <Tab.Screen name="contacts" component={ContactsPage}/>
+        </Tab.Navigator>
+      </NavigationContainer>
+    </View>
   );
-
-
-  // const [index, setIndex] = useState(0)
-  // return (
-  //   <div className="App">
-  //     <View style={{justifyContent: "space-evenly"}}>
-  //       <Text style={styles.title}>Safety App</Text>
-  //       <Tab value={index} onChange={setIndex}>
-  //         <Tab.Item 
-  //           style={styles.tab} 
-  //           icon={<FontAwesomeIcon icon={faExclamationTriangle} size={40} color={"black"} />}>
-  //           {/* // onPress={() => Alert.alert('pressed')} */}
-  //         </Tab.Item>
-  //         <Tab.Item style={styles.tab} icon={<FontAwesomeIcon icon={faPhoneAlt} size={40} color={"black"} />} />
-  //         <Tab.Item style={styles.tab} icon={<FontAwesomeIcon icon={faComment} size={40} color={"black"} />}/>
-  //         <Tab.Item style={styles.tab} icon={<FontAwesomeIcon icon={faMapMarkerAlt} size={40} color={"black"} />}/>
-  //         <Tab.Item style={styles.tab} icon={<FontAwesomeIcon icon={faWrench} size={40} color={"black"} />}/>
-  //       </Tab>
-  //     </View>
-  //   </div>
-  // );
 }
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0f0f0f',
+    backgroundColor: '#f4f2f0',
   },
   title: {
-    fontFamily: 'Nunito',
-    fontWeight:'bold',
-    fontSize: 33,
+    fontFamily: 'Helvetica',
+    fontSize: 23,
     textAlign: 'center',
-    color: '#a6a6a6',
-    paddingBottom: '5vh',
-    paddingTop: '5vh'
+    color: '#4e4540',
+    paddingBottom: '2%',
+    bottom: '-5%'
   },
   tab: {
     // backgroundColor: '#afafaf',
