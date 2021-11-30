@@ -18,7 +18,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <NavigationContainer>
-        <Text style={styles.title}>SCU Safety App</Text>
+        <Text style={styles.title}>SCU SAFETY APP</Text>
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarShowLabel: 'false',
@@ -38,8 +38,8 @@ const App = () => {
             },
             tabBarActiveTintColor: '#b0aa7e',
             tabBarInactiveTintColor: '#811e2d',
-            tabBarStyle: { backgroundColor: '#dfdbd3', top: '6%'},
-            tabBarIconStyle: { top: '15%', justifyContent:'center', alignItems:'center'},
+            tabBarStyle: { backgroundColor: '#dfdbd3', top: '5%', shadowRadius:'5px' },
+            tabBarIconStyle: { top: '15%', justifyContent:'center', alignItems:'center' },
           })}>
           <Tab.Screen name="service" component={ButtonPage}/>
           <Tab.Screen name="call" component={CallPage}/>
@@ -56,15 +56,16 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f4f2f0',
+    backgroundColor: '#b0aa7e',
   },
   title: {
-    fontFamily: 'Helvetica-Neue',
+    fontFamily: 'HelveticaNeue-Medium',
     fontSize: 23,
     textAlign: 'center',
-    color: '#4e4540',
-    paddingBottom: '2%',
-    bottom: '-5%'
+    color: '#f4f2f0',
+    paddingBottom: '5%',
+    bottom: '-6%',
+    letterSpacing: 1.5
   },
   tab: {
     // backgroundColor: '#afafaf',
