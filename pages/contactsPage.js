@@ -1,132 +1,157 @@
-import React, {useState, useEffect} from 'react';
-import { KeyboardAvoidingView,StyleSheet, Text, View, StatusBar, TextInput, Touchable, TouchableOpacityComponent, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import React, { Component } from 'react';
+import { Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View, Card } from 'react-native';
+import { ListItem } from 'react-native-elements'
 import db from './firebaseDB';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 
-/*let addItem = item => {
-  database().ref('/items').push({
-    name: item
-  });
-};
+class addContacts extends Component {
+    constructor() {
+      super();
+      this.dbRef = firebase.firestore().collection('users');
+      this.state = {
+        name: '',
+        mobile: '',
+        isLoading: false,
+        userArray: []
+      };
+    }
 
-export default function AddItem (){
-  const [name,setName] = React.useState('')
-  const [phone,setPhone] = React.useState('')}
-*/
+    componentDidMount() {
+      this.unsubscribe = this.dbRef.onSnapshot(this.getCollection);
+    }
 
-const usersCollection = db.firestore().collection('users');
+    componentWillUnmount(){
+      this.unsubscribe();
+    }
 
-const ContactsPage = () => {
-  const [name,setName] = useState('')
-  const [phone,setPhone] = useState('')
-  /*const navigation = useNavigation
-
-  useEffect(() => async() => {
-    const unsubscribe = authh.onAuthStateChanged(async (user) => {
-      if(user){
-        navigation.navigate("./pages/textPage")
+    getCollection = (querySnapshot) => {
+      const userArray = [];
+      querySnapshot.forEach((res) => {
+        const { name, mobile } = res.data();
+        userArray.push({
+          key: res.id,
+          res,
+          name,
+          mobile,
+        });
+      });
+      this.setState({
+        userArray,
+        isLoading: false,
+     });
+    }
+  
+    inputValueUpdate = (val, prop) => {
+      const state = this.state;
+      state[prop] = val;
+      this.setState(state);
+    }
+  
+    storeUser() {
+      if(this.state.name === ''){
+       alert('Fill at least your name!')
+      } else {
+        this.setState({
+          isLoading: true,
+        });      
+        this.dbRef.add({
+          name: this.state.name,
+          mobile: this.state.mobile,
+        }).then((res) => {
+          this.setState({
+            name: '',
+            mobile: '',
+            isLoading: false,
+          });
+          this.props.navigation.navigate('textPage')
+          console.log('lol')
+        })
+        .catch((err) => {
+          console.error("Error found: ", err);
+          this.setState({
+            isLoading: false,
+          });
+        });
       }
-    })
+    }
+  
+    render() {
+      if(this.state.isLoading){
+        return(
+          <View style={styles.preloader}>
+            <ActivityIndicator size="large" color="#9E9E9E"/>
+          </View>
+        )
+      }
 
-    return unsubscribe
-  }, [])*/
-
-  const handlePhone = () => {
-    database().ref('/items').push({
-    name: setName,
-    phone: setPhone
-  })
-
-    addItem(name);
-    Alert.alert('Item saved successfully');
-      /*.createPhone(name,phone)
-      ,then(userCredential => {
-        const user = userCredential.user;
-        console.log("Hallo", user.name);
-      })
-      .catch(error => alert(error.message))*/
+      return (
+        <ScrollView style={styles.container}>
+          {
+            this.state.userArray.map((item, i) => {
+              return (
+                <ListItem
+                  key={i}
+                  chevron
+                  bottomDivider
+                  title={item.name}
+                  onPress={() => {
+                    this.props.navigation.navigate('textPage', {
+                      userkey: item.key
+                    });
+                  }}/>
+              );
+            })
+          }
+          <View style={styles.inputGroup}>
+            <TextInput
+                placeholder={'Name'}
+                value={this.state.name}
+                onChangeText={(val) => this.inputValueUpdate(val, 'name')}
+            />
+          </View>
+          <View style={styles.inputGroup}>
+            <TextInput
+                placeholder={'Mobile'}
+                value={this.state.mobile}
+                onChangeText={(val) => this.inputValueUpdate(val, 'mobile')}
+            />
+          </View>
+          <View style={styles.button}>
+            <Button
+              title='Add User'
+              onPress={() => this.storeUser()} 
+              color="#0782F9"
+            />
+          </View>
+        </ScrollView>
+      );
+    }
   }
-
-
-  return(
-  <KeyboardAvoidingView style={styles.container} 
-    behavior="padding">
-    <View style={styles.inputContainer}>
-      <TextInput 
-        placeholder="Name"
-        value={name}
-        onChangeText={text => setName(text)}
-        style={styles.input}/>
-
-      <TextInput 
-        placeholder="Phone number"
-        value={phone}
-        onChangeText={text => setPhone(text)}
-        style={styles.input}/>
-    </View>
-
-    <View style={styles.buttonContainer}>
-      <TouchableOpacity 
-        onPress={() => {handlePhone}} 
-        style={styles.button}
-        >
-        <Text style={styles.button}>Add Contactor</Text>
-      </TouchableOpacity>
-    </View>
-    </KeyboardAvoidingView>
-  )};
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    flex: 1,
-    backgroundColor: '#afafaf',
-    maxHeight:'100vh',
-    alignItems: 'center',
-  },
-  inputContainer: {
-    width: '80%'
-  },
-  input: {
-    backgroundColor: 'white',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderRadius: 10,
-    marginTop: 5,
-  },
-  buttonContainer: {
-    width: '20%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 40,
-  },
-  button: {
-    backgroundColor: '#0782F9',
-    width: '100%',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  buttonOutline: {
-    backgroundColor: 'white',
-    marginTop: 5,
-    borderColor: '#0782F9',
-    borderWidth: 2,
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: '700',
-    fontSize: 16,
-  },
-  buttonOutlineText: {
-    color: '#0782F9',
-    fontWeight: '700',
-    fontSize: 16,
-  },
- 
-});
-
-export default ContactsPage;
+  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 35,
+    },
+    inputGroup: {
+        backgroundColor: 'white',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 10,
+        marginTop: 5,
+    },
+    preloader: {
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      position: 'absolute',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  })
+  
+  export default addContacts;
