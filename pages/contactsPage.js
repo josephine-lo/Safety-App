@@ -74,7 +74,7 @@ const ContactsPage = () => {
         onPress={() => {handlePhone}} 
         style={styles.button}
         >
-        <Text Block primary onPress={() => this.pushToFirebase()} style={styles.button}>Add Contactor</Text>
+        <Text style={styles.button}>Add Contactor</Text>
       </TouchableOpacity>
     </View>
     </KeyboardAvoidingView>
