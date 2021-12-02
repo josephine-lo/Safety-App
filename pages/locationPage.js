@@ -1,11 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { Platform, StyleSheet, Text, View, StatusBar } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 const LocationPage = () => {
-  return(
-  <View style={styles.container}>
-    <Text style={styles.text}>this is the location page</Text>
-  </View>
+  const SCU_LAT = 37.3496;
+  const SCU_LONG = -121.9390;
+  return (
+    <MapView
+       style = {{ flex: 1 }}
+       provider = {PROVIDER_GOOGLE}
+       showsUserLocation = {true}
+       initialRegion = {{
+       latitude: SCU_LAT,
+       longitude: SCU_LONG,
+       latitudeDelta: 0.0922,
+       longitudeDelta: 0.0421}}
+    />
   )};
 
 const styles = StyleSheet.create({
