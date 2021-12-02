@@ -36,8 +36,8 @@ const App = () => {
 
               return <FontAwesomeIcon icon={iconName} size={20} color={color} />;
             },
-            tabBarActiveTintColor: '#b0aa7e',
-            tabBarInactiveTintColor: '#811e2d',
+            tabBarActiveTintColor: '#811e2d',
+            tabBarInactiveTintColor: '#b0aa7e',
             tabBarStyle: { backgroundColor: '#dfdbd3', top: '5%', shadowRadius:'5px' },
             tabBarIconStyle: { top: '15%', justifyContent:'center', alignItems:'center' },
           })}>
@@ -56,20 +56,18 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#b0aa7e',
+    backgroundColor: '#f4f2f0',
   },
   title: {
     fontFamily: 'HelveticaNeue-Medium',
     fontSize: 23,
     textAlign: 'center',
-    color: '#f4f2f0',
-    paddingBottom: '5%',
+    color: '#811e2d',
+    paddingBottom: '6.5%',
     bottom: '-6%',
-    letterSpacing: 1.5
+    letterSpacing: 1.2
   },
   tab: {
-    // backgroundColor: '#afafaf',
-    //width: '80%',
     alignContent:'center'
   }
 });

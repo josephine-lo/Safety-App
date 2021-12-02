@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, ScrollView, StatusBar, TouchableOpacity } from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import call from 'react-native-phone-call';
 
@@ -24,42 +24,47 @@ const ButtonPage = () => {
   }
 
   return(
+    <ScrollView style={{flexGrow: 1}}>
       <Card>
         <Card>
             <Card.Title>SCU Safewalk</Card.Title>
             <Card.Divider/>
             <Card.Image style={styles.image} resizeMode="cover" source={require('../assets/images/safewalk-logo.png')}/>
-            <Text style={{marginBottom: 10}}>
+            <Text style={styles.description}>
                 On Wednesdays, Fridays, and Saturdays, SafeWalk has two people on shift who can help walk you home. This does not involve Campus Safety.
             </Text>
-            <Button
-                title = "Call number"
-                onPress = {() => callNum(SafewalkNum)}
-            />
+            <TouchableOpacity
+                style={styles.callButton}
+                onPress = {() => callNum(CampusEmergencyNum)}>
+                <Text style={styles.btnText}>Call number</Text>
+            </TouchableOpacity>
         </Card>
         <Card>
             <Card.Title>SCU Campus Safety</Card.Title>
             <Card.Divider/>
-            <Text style={{marginBottom: 10}}>
+            <Text style={styles.description}>
                 Campus Safety is open 24 hours a day. They work to keep the campus community safe, directly under SCU.
             </Text>
-            <Button
-                title = "Call number"
-                onPress = {() => callNum(CampusSafetyNum)}
-            />
+            <TouchableOpacity
+                style={styles.callButton}
+                onPress = {() => callNum(CampusEmergencyNum)}>
+                <Text style={styles.btnText}>Call number</Text>
+            </TouchableOpacity>
         </Card>
         <Card>
             <Card.Title>SCU Campus Safety Emergency</Card.Title>
             <Card.Divider/>
-            <Text style={{marginBottom: 10}}>
+            <Text style={styles.description}>
                 These are also directed toward Campus Safety, which is open 24 hours a day. Please only call in case of an emergency.
             </Text>
-            <Button
-                title = "Call number"
-                onPress = {() => callNum(CampusEmergencyNum)}
-            />
+            <TouchableOpacity
+                style={styles.callButton}
+                onPress = {() => callNum(CampusEmergencyNum)}>
+                <Text style={styles.btnText}>Call number</Text>
+            </TouchableOpacity>
         </Card>
       </Card>
+    </ScrollView>
   )
 };
 
@@ -67,9 +72,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e9e8d5',
-    maxHeight:'100%',
     alignItems: 'center'
   },
+  description: {
+    marginBottom: '5%',
+  },
+  callButton: {
+    backgroundColor: '#b30738',
+    paddingTop: '4%',
+    paddingBottom: '4%',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  btnText: {
+    color: '#ffff',
+    fontSize: 18
+  }
 });
 
 export default ButtonPage;
