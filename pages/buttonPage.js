@@ -74,6 +74,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#e9e8d5',
     alignItems: 'center'
   },
+  image: {
+    marginBottom:'5%'
+  },
   description: {
     marginBottom: '5%',
   },
