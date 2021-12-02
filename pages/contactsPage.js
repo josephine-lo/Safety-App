@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { KeyboardAvoidingView,StyleSheet, Text, View, StatusBar, TextInput, Touchable, TouchableOpacityComponent, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import database from '@react-native-firebase/database';
+import db from './firebaseDB';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 
 /*let addItem = item => {
   database().ref('/items').push({
@@ -13,7 +17,8 @@ export default function AddItem (){
   const [name,setName] = React.useState('')
   const [phone,setPhone] = React.useState('')}
 */
-  
+
+const usersCollection = db.firestore().collection('users');
 
 const ContactsPage = () => {
   const [name,setName] = useState('')
@@ -66,9 +71,9 @@ const ContactsPage = () => {
 
     <View style={styles.buttonContainer}>
       <TouchableOpacity 
-      onPress={() => {handlePhone}} 
-      style={styles.button}
-      >
+        onPress={() => {handlePhone}} 
+        style={styles.button}
+        >
         <Text Block primary onPress={() => this.pushToFirebase()} style={styles.button}>Add Contactor</Text>
       </TouchableOpacity>
     </View>
