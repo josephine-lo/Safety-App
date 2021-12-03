@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5585afaa-60e0-4b56-a478-18e04ed3f3bd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/buttonPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/buttonPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/callPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/callPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contactsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contactsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/locationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/locationPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/textPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/textPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +41,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />

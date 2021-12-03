@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View, Card } from 'react-native';
-import { ListItem } from 'react-native-elements'
+import { Button, StyleSheet, Text, TextInput, ScrollView, ActivityIndicator, View, TouchableOpacity } from 'react-native';
+import { Card, ListItem } from 'react-native-elements'
 import db from '../database/firebaseDB';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -119,11 +119,12 @@ class addContacts extends Component {
             />
           </View>
           <View style={styles.button}>
-            <Button
-              title='Add User'
-              onPress={() => this.storeUser()} 
-              color="#0782F9"
-            />
+            <TouchableOpacity
+                style={styles.storeButton}
+                onPress = {() => this.storeUser()}>
+                <Text style={styles.btnText}>Add User</Text>
+            </TouchableOpacity>
+
           </View>
         </ScrollView>
       );
@@ -150,7 +151,18 @@ class addContacts extends Component {
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center'
-    }
+    },
+    storeButton: {
+      backgroundColor: '#b30738',
+      paddingTop: '4%',
+      paddingBottom: '4%',
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    btnText: {
+      color: '#ffff',
+      fontSize: 18
+    },
   })
   
   export default addContacts;

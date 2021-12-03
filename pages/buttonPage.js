@@ -67,7 +67,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
             <TouchableOpacity
                 style={styles.callButton}
                 onPress = {() => callNum(SafewalkNum)}>
-                <Text style={styles.btnText}>Call number</Text>
+                <Text style={styles.btnText}>Call Number</Text>
             </TouchableOpacity>
         </Card>
         <Card>
@@ -79,7 +79,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
             <TouchableOpacity
                 style={styles.callButton}
                 onPress = {() => callNum(CampusSafetyNum)}>
-                <Text style={styles.btnText}>Call number</Text>
+                <Text style={styles.btnText}>Call Number</Text>
             </TouchableOpacity>
         </Card>
         <Card>
@@ -91,7 +91,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
             <TouchableOpacity
                 style={styles.callButton}
                 onPress = {() => callNum(CampusEmergencyNum)}>
-                <Text style={styles.btnText}>Call number</Text>
+                <Text style={styles.btnText}>Call Number</Text>
             </TouchableOpacity>
         </Card>
         <Card>
@@ -104,7 +104,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
             <TouchableOpacity
                 style={styles.callButton}
                 onPress = {() => callNum(CampusEmergencyNum)}>
-                <Text style={styles.btnText}>Call number</Text>
+                <Text style={styles.btnText}>Call Number</Text>
             </TouchableOpacity>
         </Card>
         <Card>
@@ -118,7 +118,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
             <TouchableOpacity
                 style={styles.callButton}
                 onPress = {() => callNum(CampusEmergencyNum)}>
-                <Text style={styles.btnText}>Call number</Text>
+                <Text style={styles.btnText}>Call Number</Text>
             </TouchableOpacity>
         </Card>
         <Card>
@@ -130,7 +130,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
             <TouchableOpacity
                 style={styles.callButton}
                 onPress = {() => callNum(NineOneOne)}>
-                <Text style={styles.btnText}>Call number</Text>
+                <Text style={styles.btnText}>Call Number</Text>
             </TouchableOpacity>
         </Card>
       </Card>

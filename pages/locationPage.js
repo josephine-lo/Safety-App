@@ -8,6 +8,8 @@ const { width, height } = Dimensions.get('window');
 const SCREEN_HEIGHT = height
 const SCREEN_WIDTH = width
 
+var arr = [];
+
 const LocationPage = () => {
   const SCU_LAT = 37.3496;
   const SCU_LONG = -121.9390;

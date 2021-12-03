@@ -14,7 +14,7 @@ const userDocument = firebase.firestore()
   .collection('users')
   .get()
   .then(collectionSnapshot => {
-      console.log('Total users: ', collectionSnapshot.size);        
+      console.log('Total users: ', collectionSnapshot.size);
       collectionSnapshot
           .forEach(documentSnapshot => {
               console.log('User ID: ', documentSnapshot.id,
@@ -31,13 +31,13 @@ const userDocument = firebase.firestore()
 // Buttons from db only show up when app refreshes
 const renderButtons = () => {
   for( let i = 0; i < arr.length; i++) {
-    return( 
+    return(
       arr.map(({ mobile, name }) => (
         <TouchableOpacity
           style={styles.stackedButton}
           onPress = {() => callNum(mobile)}>
           <Text style={styles.btnText}>Call {name}</Text>
-        </TouchableOpacity> 
+        </TouchableOpacity>
       ))
     )
   }
@@ -68,7 +68,8 @@ const CallPage = () => {
       //     {items}
       // </Card>
       <Card>
-      <Card.Title>Send Call (Contacts)</Card.Title>
+      <Card>
+      <Card.Title>Call (Contacts)</Card.Title>
       <Card.Divider/>
         <View>{renderButtons()}</View>
       {/* <Text style={styles.description}>
@@ -80,12 +81,12 @@ const CallPage = () => {
         style={styles.stackedButton}
         onPress = {() => callNum('4089999996')}>
         <Text style={styles.btnText}>Jessica Dinh</Text>
-      </TouchableOpacity> 
+      </TouchableOpacity>
       <TouchableOpacity
         style={styles.stackedButton}
         onPress = {() => callNum('4089999997')}>
         <Text style={styles.btnText}>Reanne Inafuku</Text>
-      </TouchableOpacity> 
+      </TouchableOpacity>
       <TouchableOpacity
         style={styles.stackedButton}
         onPress = {() => callNum('4089999998')}>
@@ -95,8 +96,9 @@ const CallPage = () => {
         style={styles.stackedButton}
         onPress = {() => callNum('4089999999')}>
         <Text style={styles.btnText}>Grace Tantra</Text>
-      </TouchableOpacity>  
+      </TouchableOpacity>
       <View>{renderButtons()}</View>
+      </Card>
     </Card>
   )};
 
