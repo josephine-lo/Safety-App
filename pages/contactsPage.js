@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View, Card } from 'react-native';
 import { ListItem } from 'react-native-elements'
-import db from './firebaseDB';
+import db from '../database/firebaseDB';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-
 
 class addContacts extends Component {
     constructor() {

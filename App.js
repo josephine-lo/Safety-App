@@ -47,9 +47,7 @@ const App = () => {
           <Tab.Screen name="text" component={TextPage}/>
           <Tab.Screen name="location" component={LocationPage}/>
           <Tab.Screen name="contacts" component={ContactsPage}/>
-
         </Tab.Navigator>
-
       </NavigationContainer>
     </View>
   );

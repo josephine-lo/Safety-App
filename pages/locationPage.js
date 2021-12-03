@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, StyleSheet, Text, View, StatusBar, Dimensions, ScrollView, TouchableOpacity  } from 'react-native';
 import { Card } from 'react-native-elements';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import firebase from 'firebase/compat/app';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_HEIGHT = height
@@ -13,11 +14,13 @@ const LocationPage = () => {
 
   // create button for each contact/service
   const items = [
-    <TouchableOpacity
-      style={styles.callButton}
-      onPress = {() => callNum(CampusEmergencyNum)}>
-      <Text style={styles.btnText}>Call number</Text>
-    </TouchableOpacity> 
+    arr.map(({ mobile, name }) => (
+      <TouchableOpacity
+        style={styles.callButton}
+        onPress = {() => callNum(mobile)}>
+        <Text style={styles.btnText}>Call {name}</Text>
+      </TouchableOpacity> 
+    )),
 ]
 
   return (
@@ -36,26 +39,44 @@ const LocationPage = () => {
             <Card>
               <Card.Title>Send Location (Contacts)</Card.Title>
               <Card.Divider/>
-              <Text style={styles.description}>
-                  Select contacts to send location:
-              </Text>
+              {/* <Text style={styles.description}>
+                  Select contact to send location:
+              </Text> */}
+              
+              {/* Hardcoded values! */}
               <TouchableOpacity
-                  style={styles.callButton}
-                  onPress = {() => callNum(CampusEmergencyNum)}>
-                  <Text style={styles.btnText}>Call number</Text>
+                style={styles.stackedButton}
+                onPress = {() => callNum('4089999996')}>
+                <Text style={styles.btnText}>Jessica Dinh</Text>
+              </TouchableOpacity> 
+              <TouchableOpacity
+                style={styles.stackedButton}
+                onPress = {() => callNum('4089999997')}>
+                <Text style={styles.btnText}>Reanne Inafuku</Text>
+              </TouchableOpacity> 
+              <TouchableOpacity
+                style={styles.stackedButton}
+                onPress = {() => callNum('4089999998')}>
+                <Text style={styles.btnText}>Josephine Lo</Text>
               </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.stackedButton}
+                onPress = {() => callNum('4089999999')}>
+                <Text style={styles.btnText}>Grace Tantra</Text>
+              </TouchableOpacity>  
+              {/* <View>{renderButtons()}</View> */}
             </Card>
 
             <Card>
             <Card.Title>Send Location (Services)</Card.Title>
                 <Card.Divider/>
-                <Text style={styles.description}>
-                    Select contacts to send location:
-                </Text>
+                {/* <Text style={styles.description}>
+                    Select services to send location:
+                </Text> */}
                 <TouchableOpacity
                     style={styles.callButton}
                     onPress = {() => callNum(CampusEmergencyNum)}>
-                    <Text style={styles.btnText}>Call number</Text>
+                    <Text style={styles.btnText}>SafeWalk</Text>
                 </TouchableOpacity>
             </Card>
         </Card>
@@ -80,6 +101,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#b30738',
     paddingTop: '4%',
     paddingBottom: '4%',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  stackedButton: {
+    backgroundColor: '#b30738',
+    paddingTop: '4%',
+    paddingBottom: '4%',
+    marginTop: '3%',
     borderRadius: 5,
     alignItems: 'center',
   },

@@ -37,7 +37,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
   }
 
   const NineOneOne = {
-    number: "911",
+    number: "" + "911",
     prompt: false
   }
 
