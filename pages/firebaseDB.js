@@ -11,13 +11,13 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAjlDSpZlrJ7h_ytsf1Fj98NhLKbnVx3cQ",
-    authDomain: "safety-app-dbcde.firebaseapp.com",
-    projectId: "safety-app-dbcde",
-    storageBucket: "safety-app-dbcde.appspot.com",
-    messagingSenderId: "996133857775",
-    appId: "1:996133857775:web:96da9d713d7194a2296e1a",
-    measurementId: "G-0CVX88012T"
+  apiKey: "AIzaSyAODN854oLOurQJxBiejXsukA4tJwauc9g",
+  authDomain: "safety-app-6414b.firebaseapp.com",
+  projectId: "safety-app-6414b",
+  storageBucket: "safety-app-6414b.appspot.com",
+  messagingSenderId: "453600963488",
+  appId: "1:453600963488:web:89d256ef2380655a6712c5",
+  measurementId: "G-KRMCG1ZP31"
 };
 
 /*let Firebase;
@@ -32,3 +32,4 @@ export default Firebase;*/
 //var db = firebase.firestore();
 //firebase.firestore();
 export default firebase.initializeApp(firebaseConfig);
+

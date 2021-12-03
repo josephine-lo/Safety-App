@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faExclamationTriangle, faPhoneAlt, faComment, faMapMarkerAlt, faWrench } from '@fortawesome/free-solid-svg-icons'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import ButtonPage from './pages/buttonPage';
 import CallPage from './pages/callPage';
@@ -12,7 +13,10 @@ import LocationPage from './pages/locationPage';
 import TextPage from './pages/textPage';
 import ContactsPage from './pages/contactsPage';
 
+
+
 const Tab = createMaterialTopTabNavigator();
+
 
 const App = () => {
   return (
@@ -32,6 +36,7 @@ const App = () => {
               else if (route.name === 'text') iconName = faComment;
               else if (route.name === 'location') iconName = faMapMarkerAlt;
               else if (route.name === 'contacts') iconName = faWrench;
+              else if(route.name === 'user') iconName = faUser;
               else ;
 
               return <FontAwesomeIcon icon={iconName} size={20} color={color} />;
@@ -46,7 +51,9 @@ const App = () => {
           <Tab.Screen name="text" component={TextPage}/>
           <Tab.Screen name="location" component={LocationPage}/>
           <Tab.Screen name="contacts" component={ContactsPage}/>
+
         </Tab.Navigator>
+
       </NavigationContainer>
     </View>
   );

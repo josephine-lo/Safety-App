@@ -37,6 +37,19 @@ import call from 'react-native-phone-call';
     <ScrollView style={{flexGrow: 1}}>
       <Card>
         <Card>
+            <Card.Title>Emergency Button</Card.Title>
+            <Card.Divider/>
+            <Card.Image style={styles.image} resizeMode="cover" source={require('../assets/images/safewalk-logo.png')}/>
+            <Text style={styles.description}>
+                On Wednesdays, Fridays, and Saturdays, SafeWalk has two people on shift who can help walk you home. This does not involve Campus Safety.
+            </Text>
+            <TouchableOpacity
+                style={styles.callButton}
+                onPress = {() => callNum(CampusEmergencyNum)}>
+                <Text style={styles.btnText}>Call number</Text>
+            </TouchableOpacity>
+        </Card>
+        <Card>
             <Card.Title>SCU Safewalk</Card.Title>
             <Card.Divider/>
             <Card.Image style={styles.image} resizeMode="cover" source={require('../assets/images/safewalk-logo.png')}/>
