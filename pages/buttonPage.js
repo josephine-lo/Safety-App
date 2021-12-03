@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, ScrollView, StatusBar, TouchableOpacity } from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import call from 'react-native-phone-call';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+
 
 const ButtonPage = () => {
   callNum = (num) => {
@@ -23,21 +26,25 @@ const ButtonPage = () => {
     prompt: false
   }
 
+  const NineOneOne = {
+    number: "911",
+    prompt: false
+  }
+
   return(
     <ScrollView style={{flexGrow: 1}}>
       <Card>
         <Card>
             <Card.Title>Emergency Button</Card.Title>
             <Card.Divider/>
-            <Card.Image style={styles.image} resizeMode="cover" source={require('../assets/images/safewalk-logo.png')}/>
-            <Text style={styles.description}>
-                On Wednesdays, Fridays, and Saturdays, SafeWalk has two people on shift who can help walk you home. This does not involve Campus Safety.
-            </Text>
-            <TouchableOpacity
-                style={styles.callButton}
+            <TouchableOpacity //faExclamationTriangle
+                style={styles.emergencyButton}
                 onPress = {() => callNum(CampusEmergencyNum)}>
-                <Text style={styles.btnText}>Call number</Text>
+                <FontAwesomeIcon icon={faExclamationTriangle} size={90} color={'white'} style={styles.icon} />
             </TouchableOpacity>
+            <Text style={styles.description}>
+                Send current location to all contacts. Only press during an emergency! 
+            </Text>
         </Card>
         <Card>
             <Card.Title>SCU Safewalk</Card.Title>
@@ -48,7 +55,7 @@ const ButtonPage = () => {
             </Text>
             <TouchableOpacity
                 style={styles.callButton}
-                onPress = {() => callNum(CampusEmergencyNum)}>
+                onPress = {() => callNum(SafewalkNum)}>
                 <Text style={styles.btnText}>Call number</Text>
             </TouchableOpacity>
         </Card>
@@ -60,7 +67,7 @@ const ButtonPage = () => {
             </Text>
             <TouchableOpacity
                 style={styles.callButton}
-                onPress = {() => callNum(CampusEmergencyNum)}>
+                onPress = {() => callNum(CampusSafetyNum)}>
                 <Text style={styles.btnText}>Call number</Text>
             </TouchableOpacity>
         </Card>
@@ -73,6 +80,18 @@ const ButtonPage = () => {
             <TouchableOpacity
                 style={styles.callButton}
                 onPress = {() => callNum(CampusEmergencyNum)}>
+                <Text style={styles.btnText}>Call number</Text>
+            </TouchableOpacity>
+        </Card>
+        <Card>
+            <Card.Title>911</Card.Title>
+            <Card.Divider/>
+            <Text style={styles.description}>
+                This number is only intended for use in emergency circumstances. Proceed with caution!
+            </Text>
+            <TouchableOpacity
+                style={styles.callButton}
+                onPress = {() => callNum(NineOneOne)}>
                 <Text style={styles.btnText}>Call number</Text>
             </TouchableOpacity>
         </Card>
@@ -93,6 +112,20 @@ const styles = StyleSheet.create({
   description: {
     marginBottom: '5%',
   },
+  emergencyButton: {
+    width: 150,
+    height: 150,
+    backgroundColor: '#b30738',
+    borderRadius: 100,
+    alignItems: 'center',
+    left: '20%',
+    shadowRadius: 10,
+    marginBottom: '10%'
+  },
+  icon: {
+    alignItems: 'center',
+    marginTop: '14%',
+  },
   callButton: {
     backgroundColor: '#b30738',
     paddingTop: '4%',
@@ -103,7 +136,7 @@ const styles = StyleSheet.create({
   btnText: {
     color: '#ffff',
     fontSize: 18
-  }
+  },
 });
 
 export default ButtonPage;

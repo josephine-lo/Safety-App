@@ -13,10 +13,7 @@ import LocationPage from './pages/locationPage';
 import TextPage from './pages/textPage';
 import ContactsPage from './pages/contactsPage';
 
-
-
 const Tab = createMaterialTopTabNavigator();
-
 
 const App = () => {
   return (
@@ -36,7 +33,6 @@ const App = () => {
               else if (route.name === 'text') iconName = faComment;
               else if (route.name === 'location') iconName = faMapMarkerAlt;
               else if (route.name === 'contacts') iconName = faWrench;
-              else if(route.name === 'user') iconName = faUser;
               else ;
 
               return <FontAwesomeIcon icon={iconName} size={20} color={color} />;
