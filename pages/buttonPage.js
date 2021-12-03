@@ -47,7 +47,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
         <Card>
             <Card.Title>Emergency Button</Card.Title>
             <Card.Divider/>
-            <TouchableOpacity //faExclamationTriangle
+            <TouchableOpacity
                 style={styles.emergencyButton}
                 onPress = {() => callNum(CampusEmergencyNum)}>
                 <FontAwesomeIcon icon={faExclamationTriangle} size={90} color={'white'} style={styles.icon} />
