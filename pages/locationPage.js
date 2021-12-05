@@ -3,27 +3,52 @@ import { Platform, StyleSheet, Text, View, StatusBar, Dimensions, ScrollView, To
 import { Card } from 'react-native-elements';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_HEIGHT = height
 const SCREEN_WIDTH = width
 
 var arr = [];
+var dataArr = [];
+var nameArr = [];
+const userDocument = firebase.firestore()
+  .collection('users')
+  .get()
+  .then(collectionSnapshot => {
+      console.log('Total users: ', collectionSnapshot.size);
+      collectionSnapshot
+          .forEach(documentSnapshot => {
+              console.log('User ID: ', documentSnapshot.id,
+                  documentSnapshot.data());
+              arr.push(documentSnapshot.data());
+              dataArr.push(documentSnapshot.get('mobile'));
+              nameArr.push(documentSnapshot.get('name'));
+          });
+    //console.log(arr)
+    console.log(dataArr);
+    console.log(nameArr);
+  });
+
+// Buttons from db only show up when app refreshes
+const renderButtons = () => {
+  for( let i = 0; i < arr.length; i++) {
+    return(
+      arr.map(({ mobile, name }) => (
+        <TouchableOpacity
+          style={styles.stackedButton}
+          onPress = {() => sendText(mobile)}>
+          <Text style={styles.btnText}>Send to {name}</Text>
+        </TouchableOpacity>
+      ))
+    )
+  }
+}
 
 const LocationPage = () => {
   const SCU_LAT = 37.3496;
   const SCU_LONG = -121.9390;
-
-  // create button for each contact/service
-  const items = [
-    arr.map(({ mobile, name }) => (
-      <TouchableOpacity
-        style={styles.callButton}
-        onPress = {() => callNum(mobile)}>
-        <Text style={styles.btnText}>Call {name}</Text>
-      </TouchableOpacity> 
-    )),
-]
 
   return (
       <View style={styles.container}>
@@ -41,32 +66,7 @@ const LocationPage = () => {
             <Card>
               <Card.Title>Send Location (Contacts)</Card.Title>
               <Card.Divider/>
-              {/* <Text style={styles.description}>
-                  Select contact to send location:
-              </Text> */}
-              
-              {/* Hardcoded values! */}
-              <TouchableOpacity
-                style={styles.stackedButton}
-                onPress = {() => callNum('4089999996')}>
-                <Text style={styles.btnText}>Jessica Dinh</Text>
-              </TouchableOpacity> 
-              <TouchableOpacity
-                style={styles.stackedButton}
-                onPress = {() => callNum('4089999997')}>
-                <Text style={styles.btnText}>Reanne Inafuku</Text>
-              </TouchableOpacity> 
-              <TouchableOpacity
-                style={styles.stackedButton}
-                onPress = {() => callNum('4089999998')}>
-                <Text style={styles.btnText}>Josephine Lo</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.stackedButton}
-                onPress = {() => callNum('4089999999')}>
-                <Text style={styles.btnText}>Grace Tantra</Text>
-              </TouchableOpacity>  
-              {/* <View>{renderButtons()}</View> */}
+              <View>{renderButtons()}</View>
             </Card>
 
             <Card>

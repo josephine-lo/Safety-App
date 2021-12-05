@@ -89,20 +89,7 @@ class addContacts extends Component {
       return (
         <ScrollView style={styles.container}>
           {
-            this.state.userArray.map((item, i) => {
-              return (
-                <ListItem
-                  key={i}
-                  chevron
-                  bottomDivider
-                  title={item.name}
-                  onPress={() => {
-                    this.props.navigation.navigate('textPage', {
-                      userkey: item.key
-                    });
-                  }}/>
-              );
-            })
+//
           }
           <View style={styles.inputGroup}>
             <TextInput

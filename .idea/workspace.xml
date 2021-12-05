@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5585afaa-60e0-4b56-a478-18e04ed3f3bd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/buttonPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/buttonPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/callPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/callPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/contactsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contactsPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/locationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/locationPage.js" afterDir="false" />

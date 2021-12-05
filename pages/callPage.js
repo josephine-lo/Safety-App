@@ -43,7 +43,6 @@ const renderButtons = () => {
   }
 }
 
-
 const CallPage = () => {
   callNum = (numstring) => {
     const num = {
@@ -53,51 +52,12 @@ const CallPage = () => {
     call(num).catch(console.error)
   }
 
-  const items = [
-      <Card>
-          <Card.Title>Emergency Contact Name</Card.Title>
-          <Button
-              title = "Call number"
-              onPress = {() => callNum('9876543210')}
-          />
-      </Card>
-  ]
-
   return(
-      // <Card>
-      //     {items}
-      // </Card>
-      <Card>
+    <Card>
       <Card>
       <Card.Title>Call (Contacts)</Card.Title>
       <Card.Divider/>
         <View>{renderButtons()}</View>
-      {/* <Text style={styles.description}>
-          Select contact to send location:
-      </Text> */}
-      
-      {/* Hardcoded values! */}
-      <TouchableOpacity
-        style={styles.stackedButton}
-        onPress = {() => callNum('4089999996')}>
-        <Text style={styles.btnText}>Jessica Dinh</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.stackedButton}
-        onPress = {() => callNum('4089999997')}>
-        <Text style={styles.btnText}>Reanne Inafuku</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.stackedButton}
-        onPress = {() => callNum('4089999998')}>
-        <Text style={styles.btnText}>Josephine Lo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.stackedButton}
-        onPress = {() => callNum('4089999999')}>
-        <Text style={styles.btnText}>Grace Tantra</Text>
-      </TouchableOpacity>
-      <View>{renderButtons()}</View>
       </Card>
     </Card>
   )};
