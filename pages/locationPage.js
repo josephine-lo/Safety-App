@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Platform, StyleSheet, Text, View, StatusBar, Dimensions, ScrollView, TouchableOpacity, Image  } from 'react-native';
+import { Platform, StyleSheet, Text, View, StatusBar, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-elements';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import firebase from 'firebase/compat/app';
@@ -105,6 +105,9 @@ const LocationPage = () => {
             <Card>
             <Card.Title>Send Location (Services)</Card.Title>
                 <Card.Divider/>
+              {/* <Text style={styles.description}>
+                    Select services to send location:
+                </Text> */}
                 <TouchableOpacity
                     style={styles.callButton}
                     onPress = {() => callNum(CampusEmergencyNum)}>
