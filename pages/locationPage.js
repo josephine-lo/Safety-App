@@ -1,10 +1,12 @@
-import React from 'react';
-import { Platform, StyleSheet, Text, View, StatusBar, Dimensions, ScrollView, TouchableOpacity  } from 'react-native';
+import React, { useState } from 'react';
+import { Platform, StyleSheet, Text, View, StatusBar, Dimensions, ScrollView, TouchableOpacity, Image  } from 'react-native';
 import { Card } from 'react-native-elements';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import * as Location from 'expo-location';
+import * as Clipboard from 'expo-clipboard';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_HEIGHT = height
@@ -50,6 +52,30 @@ const LocationPage = () => {
   const SCU_LAT = 37.3496;
   const SCU_LONG = -121.9390;
 
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
+
+  Location.installWebGeolocationPolyfill();
+    var getPosition = function (options) {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+  }
+
+  getPosition()
+    .then((position) => {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
+
+  const copyLink = () => {
+    Clipboard.setString("https://www.google.com/maps/search/?api=1&query=" +
+    lat + "," + long);
+  }
+
   return (
       <View style={styles.container}>
         <ScrollView style={{ flex: 1 }}>
@@ -58,11 +84,18 @@ const LocationPage = () => {
                 provider = {PROVIDER_GOOGLE}
                 showsUserLocation = {true}
                 initialRegion = {{
-                latitude: SCU_LAT,
-                longitude: SCU_LONG,
+                latitude: lat,
+                longitude: long,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421}} />
           <Card>
+            <Card>
+              <TouchableOpacity
+                  style={styles.callButton}
+                  onPress = {() => copyLink()}>
+                  <Text style={styles.btnText}>Copy Location Link</Text>
+              </TouchableOpacity>
+            </Card>
             <Card>
               <Card.Title>Send Location (Contacts)</Card.Title>
               <Card.Divider/>
@@ -72,9 +105,6 @@ const LocationPage = () => {
             <Card>
             <Card.Title>Send Location (Services)</Card.Title>
                 <Card.Divider/>
-                {/* <Text style={styles.description}>
-                    Select services to send location:
-                </Text> */}
                 <TouchableOpacity
                     style={styles.callButton}
                     onPress = {() => callNum(CampusEmergencyNum)}>
